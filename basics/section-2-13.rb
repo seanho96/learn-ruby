@@ -11,6 +11,7 @@ puts "Hello World"
 # puts = put + s = put string
 # print out argument as string (outputs to console)
 # puts doesn't return anything hence NIL is returned
+# puts invokes the to_s method which makes ta string representation of the object
 
 p "Hello World"
 # p returns whatever argument you give it
