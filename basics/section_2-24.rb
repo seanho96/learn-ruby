@@ -23,23 +23,14 @@ puts "Please enter the operation of choice"
 puts "multiply / divide / add / substract / modulus"
 operation = gets.chomp.downcase
 
-if operation == "multiply"
-  puts "The first number multiplied by the second number is #{operator(num_1, num_2, "multiply")}"
-elsif operation == "add"
-  puts "The first number added by the second number is #{operator(num_1, num_2, "add")}"
-elsif operation == "substract"
-  puts "The first number substracted by the second number is #{operator(num_1, num_2, "substract")}"
-elsif operation == "divide"
+case operation
+when "multiply", "add", "substract"
+  puts "The first number #{operation} by the second number is #{operator(num_1, num_2, operation)}"
+when "divide", "modulus"
   if num_2 == 0
-    puts "#{num_1} cannot be divided by #{num_2}"
+    puts "Cannot #{operation} #{num_1} by #{num_2}"
   else
-    puts "The first number divided by the second number is #{operator(num_1, num_2, "divide")}"
-  end
-elsif operation == "modulus"
-  if num_2 == 0
-    puts "#{num_1} cannot be modulus by #{num_2}"
-  else
-    puts "The first number modulus by the second number is #{operator(num_1, num_2, "modulus")}"
+    puts "The first number #{operation} by the second number is #{operator(num_1, num_2, operation)}"
   end
 else
   puts "Invalid operation"
