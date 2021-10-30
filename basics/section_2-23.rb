@@ -9,6 +9,9 @@ puts multiply(2, 5)
 ############
 
 def operator(first_num, second_num, operation)
+  first_num = first_num.to_f
+  second_num = second_num.to_f
+
   if operation == "multiply"
     first_num * second_num
   elsif operation == "divide"
@@ -26,14 +29,14 @@ puts "Simple Calculator"
 20.times { print "-" }
 puts
 puts "Please enter the first number"
-num_1 = gets.chomp.to_f
+num_1 = gets.chomp
 puts "Please enter the second number"
-num_2 = gets.chomp.to_f
+num_2 = gets.chomp
 
 puts "The first number multiplied by the second number is #{operator(num_1, num_2, "multiply")}"
 puts "The first number added by the second number is #{operator(num_1, num_2, "add")}"
 puts "The first number substracted by the second number is #{operator(num_1, num_2, "substract")}"
-if num_2 == 0
+if num_2.to_f == 0
   puts "#{num_1} cannot be divided by #{num_2}"
   puts "#{num_1} cannot be modulus by #{num_2}"
 else
