@@ -1,37 +1,35 @@
 def operator(first_num, second_num, operation)
-  if operation == "multiply"
-    first_num * second_num
-  elsif operation == "divide"
-    first_num / second_num
-  elsif operation == "add"
-    first_num + second_num
-  elsif operation == "substract"
-    first_num - second_num
-  elsif operation == "modulus"
-    first_num % second_num
+  first_num = first_num.to_f
+  second_num = second_num.to_f
+  return first_num * second_num if operation == "multiply"
+  return first_num + second_num if operation == "add"
+  return first_num - second_num if operation == "subtract"
+  if second_num == 0
+    raise ZeroDivisionError.new "Cannot #{operation} #{first_num} by #{second_num}"
   end
+  return first_num / second_num if operation == "divide"
+  return first_num - second_num if operation == "modulus"
 end
+
+valid_operators = %w[multiply add subtract divide modulus]
 
 puts "Simple Calculator"
 20.times { print "-" }
 puts
 puts "Please enter the first number"
-num_1 = gets.chomp.to_f
+num_1 = gets.chomp
 puts "Please enter the second number"
-num_2 = gets.chomp.to_f
+num_2 = gets.chomp
 puts "Please enter the operation of choice"
-puts "multiply / divide / add / substract / modulus"
+puts "multiply / divide / add / subtract / modulus"
 operation = gets.chomp.downcase
-
-case operation
-when "multiply", "add", "substract"
-  puts "The first number #{operation} by the second number is #{operator(num_1, num_2, operation)}"
-when "divide", "modulus"
-  if num_2 == 0
-    puts "Cannot #{operation} #{num_1} by #{num_2}"
-  else
-    puts "The first number #{operation} by the second number is #{operator(num_1, num_2, operation)}"
+begin
+  if valid_operators.include?(operation)
+    return(
+      puts "The first number #{operation} by the second number is #{operator(num_1, num_2, operation)}"
+    )
   end
-else
   puts "Invalid operation"
+rescue ZeroDivisionError => ex
+  puts ex.message
 end
