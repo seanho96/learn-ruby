@@ -9,9 +9,8 @@ def operator(first_num, second_num, operation)
   end
   return first_num / second_num if operation == "divide"
   return first_num - second_num if operation == "modulus"
+  raise "Invalid operation"
 end
-
-valid_operators = %w[multiply add subtract divide modulus]
 
 puts "Simple Calculator"
 20.times { print "-" }
@@ -24,12 +23,7 @@ puts "Please enter the operation of choice"
 puts "multiply / divide / add / subtract / modulus"
 operation = gets.chomp.downcase
 begin
-  if valid_operators.include?(operation)
-    return(
-      puts "The first number #{operation} by the second number is #{operator(num_1, num_2, operation)}"
-    )
-  end
-  puts "Invalid operation"
-rescue ZeroDivisionError => ex
+  puts "The first number #{operation} by the second number is #{operator(num_1, num_2, operation)}"
+rescue => ex
   puts ex.message
 end
