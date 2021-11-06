@@ -7,10 +7,9 @@ users = [
 ]
 
 def auth_user(username, password, list_of_users)
-  list_of_users.each do |user|
-    return user if user[:username] == username && user[:password] == password
-  end
-  return "Credentials were not correct"
+  list_of_users.find do |user|
+    user[:username] == username && user[:password] == password
+  end || "Credentials were not correct"
 end
 
 puts "Welcome to the authenticator"
