@@ -27,12 +27,18 @@ while attempts < max_number_of_attempts
   username = gets.chomp
   print "Password: "
   password = gets.chomp
+
   auth_message = auth_user(username, password, users)
   puts auth_message
-  puts "Press n to quit or any other key to continue: "
-  input = gets.chomp.downcase
-  break if input == "n"
-  attempts += 1
+
+  if auth_message == "Credentials were not correct"
+    puts "Press n to quit or any other key to continue: "
+    input = gets.chomp.downcase
+    break if input == "n"
+    attempts += 1
+  else
+    break
+  end
 end
 if attempts == max_number_of_attempts
   puts "You have exceeded the number of attempts"
