@@ -31,14 +31,11 @@ while attempts < max_number_of_attempts
   auth_message = auth_user(username, password, users)
   puts auth_message
 
-  if auth_message == "Credentials were not correct"
-    puts "Press n to quit or any other key to continue: "
-    input = gets.chomp.downcase
-    break if input == "n"
-    attempts += 1
-  else
-    break
-  end
+  break if auth_message != "Credentials were not correct"
+  puts "Press n to quit or any other key to continue: "
+  input = gets.chomp.downcase
+  break if input == "n"
+  attempts += 1
 end
 if attempts == max_number_of_attempts
   puts "You have exceeded the number of attempts"
