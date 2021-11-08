@@ -35,7 +35,7 @@ loop do
   begin
     puts "Enter your selection"
     area = gets.chomp.downcase
-    raise "Invalid city name, please try again" if !city_names.include?(area)
+    raise "Invalid city name, please try again" unless city_names.include?(area)
     puts get_area_code(dial_book, area).to_i
     break
   rescue => ex
